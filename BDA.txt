@@ -1,0 +1,163 @@
+Ex:1
+
+use collegeDB;
+
+
+db.personaldetail.insertMany([
+  { _id: 1, firstname: "Ravi", lastname: "Patel", rollNo: "001", semester: 2, majorsubject: "Computer Science" },
+  { _id: 2, firstname: "Sneha", lastname: "Shah", rollNo: "002", semester: 4, majorsubject: "IT" },
+  { _id: 3, firstname: "Amit", lastname: "Joshi", rollNo: "003", semester: 3, majorsubject: "Electronics" },
+  { _id: 4, firstname: "Priya", lastname: "Patel", rollNo: "004", semester: 1, majorsubject: "Physics" },
+  { _id: 5, firstname: "Karan", lastname: "Mehta", rollNo: "005", semester: 2, majorsubject: "Mathematics" },
+  { _id: 6, firstname: "Divya", lastname: "Trivedi", rollNo: "006", semester: 4, majorsubject: "Chemistry" },
+  { _id: 7, firstname: "Neha", lastname: "Desai", rollNo: "007", semester: 3, majorsubject: "Biology" },
+  { _id: 8, firstname: "Raj", lastname: "Kapoor", rollNo: "008", semester: 2, majorsubject: "Statistics" },
+  { _id: 9, firstname: "Tina", lastname: "Patel", rollNo: "009", semester: 1, majorsubject: "Zoology" },
+  { _id: 10, firstname: "Manav", lastname: "Gandhi", rollNo: "010", semester: 4, majorsubject: "Botany" }
+]);
+
+
+
+db.marksheet.insertOne({ _id: 1, firstname: "Ravi", lastname: "Patel", percentage: 72, semester: 2 });
+db.marksheet.insertOne({ _id: 2, firstname: "Sneha", lastname: "Shah", percentage: 68, semester: 4 });
+db.marksheet.insertOne({ _id: 3, firstname: "Amit", lastname: "Joshi", percentage: 55, semester: 3 });
+db.marksheet.insertOne({ _id: 4, firstname: "Priya", lastname: "Patel", percentage: 75, semester: 2 });
+db.marksheet.insertOne({ _id: 5, firstname: "Karan", lastname: "Mehta", percentage: 82, semester: 4 });
+db.marksheet.insertOne({ _id: 6, firstname: "Divya", lastname: "Trivedi", percentage: 49, semester: 2 });
+db.marksheet.insertOne({ _id: 7, firstname: "Neha", lastname: "Desai", percentage: 91, semester: 4 });
+db.marksheet.insertOne({ _id: 8, firstname: "Raj", lastname: "Kapoor", percentage: 34, semester: 1 });
+db.marksheet.insertOne({ _id: 9, firstname: "Tina", lastname: "Patel", percentage: 66, semester: 3 });
+db.marksheet.insertOne({ _id: 10, firstname: "Manav", lastname: "Gandhi", percentage: 88, semester: 2 });
+
+
+db.marksheet.find(
+  { percentage: { $gt: 70 }, semester: 2 },
+  { _id: 0, firstname: 1, percentage: 1 }
+);
+
+
+db.marksheet.find({ semester: 4 });
+
+db.marksheet.find({ percentage: { $lt: 40 } });
+
+db.marksheet.find({ firstname: /^R/ });
+
+db.personaldetail.find({}, { majorsubject: 0 });
+
+
+________________________________________________________________________________
+
+Ex:2
+
+use mediaDB; 
+
+
+db.movie.insertMany([
+  { _id: 1, title: "The Great Empire", genre: "historic", director: "Ashutosh Gowariker", releaseyear: 2008, platform: "Theatre", cost: 950000000 },
+  { _id: 2, title: "Laugh Riot", genre: "comedy", director: "Raj Mehta", releaseyear: 2021, platform: "OTT", cost: 300000000 },
+  { _id: 3, title: "Time Travel", genre: "drama", director: "Christopher Nolan", releaseyear: 2014, platform: "Theatre", cost: 1050000000 },
+  { _id: 4, title: "Her Story", genre: "autobiography", director: "Meghna Gulzar", releaseyear: 2019, platform: "OTT", cost: 500000000 },
+  { _id: 5, title: "Freedom Fighters", genre: "historic", director: "Ketan Mehta", releaseyear: 2006, platform: "Theatre", cost: 880000000 },
+  { _id: 6, title: "Campus Chaos", genre: "comedy", director: "Karan Johar", releaseyear: 2017, platform: "Theatre", cost: 350000000 },
+  { _id: 7, title: "Mystic River", genre: "drama", director: "Clint Eastwood", releaseyear: 2003, platform: "Theatre", cost: 700000000 },
+  { _id: 8, title: "The Legend", genre: "historic", director: "Sanjay Leela Bhansali", releaseyear: 2018, platform: "OTT", cost: 1100000000 },
+  { _id: 9, title: "Broken Dreams", genre: "drama", director: "Imtiaz Ali", releaseyear: 2022, platform: "OTT", cost: 450000000 },
+  { _id: 10, title: "Grit & Glory", genre: "autobiography", director: "Rakeysh Omprakash Mehra", releaseyear: 2011, platform: "Theatre", cost: 400000000 }
+]);
+
+
+db.movie.insertOne({ _id: 11, title: "Epic Saga", genre: "historic", director: "S. S. Rajamouli", releaseyear: 2015, platform: "Theatre", cost: 1200000000 });
+db.movie.insertOne({ _id: 12, title: "Family Ties", genre: "drama", director: "Karan Johar", releaseyear: 2020, platform: "OTT", cost: 420000000 });
+db.movie.insertOne({ _id: 13, title: "Royal Memoir", genre: "autobiography", director: "Shyam Benegal", releaseyear: 2004, platform: "Theatre", cost: 300000000 });
+db.movie.insertOne({ _id: 14, title: "Comic Chaos", genre: "comedy", director: "Anees Bazmee", releaseyear: 2023, platform: "OTT", cost: 280000000 });
+db.movie.insertOne({ _id: 15, title: "Dynasty", genre: "historic", director: "Sanjay Leela Bhansali", releaseyear: 2017, platform: "Theatre", cost: 980000000 });
+db.movie.insertOne({ _id: 16, title: "Zindagi", genre: "drama", director: "Farhan Akhtar", releaseyear: 2011, platform: "Theatre", cost: 320000000 });
+db.movie.insertOne({ _id: 17, title: "Truth Be Told", genre: "autobiography", director: "Nandita Das", releaseyear: 2010, platform: "OTT", cost: 250000000 });
+db.movie.insertOne({ _id: 18, title: "Giggle Club", genre: "comedy", director: "Rohit Shetty", releaseyear: 2016, platform: "Theatre", cost: 370000000 });
+db.movie.insertOne({ _id: 19, title: "Warriors Rise", genre: "historic", director: "Ashutosh Gowariker", releaseyear: 2001, platform: "OTT", cost: 890000000 });
+db.movie.insertOne({ _id: 20, title: "Echoes", genre: "drama", director: "Zoya Akhtar", releaseyear: 2023, platform: "OTT", cost: 600000000 });
+
+
+db.movie.find(
+  { cost: { $gt: 850000000 }, genre: "historic" },
+  { _id: 0, title: 1, cost: 1 }
+);
+
+db.movie.find({ releaseyear: { $gt: 2000 } });
+
+db.movie.find({ director: "Karan Johar" });
+
+db.movie.find({ platform: "OTT", releaseyear: { $gt: 2018 } });
+
+db.movie.find({ title: /^T/ });
+
+db.movie.find({}, { director: 0 });
+________________________________________________________________________________
+
+Ex:Sujal
+
+use demo
+
+db.collections1.insertMany([
+{"Name":"Sujal","Address":"Valsad"},
+{"Name":"Sanyam","Address":"Bilimora"},
+{"Name":"Parth","Address":"Udaipur"},
+{"Name":"Mahipal","Address":"Rajasthan"}
+])
+
+db.collections1.find()
+
+db.collections1.find({},{"Name":1,"_id":0})
+
+db.collections1.find({"Name":"Sujal"})
+
+db.collections1.update({"Name":"Sanyam"},{$set:{"Address":"China"}})
+
+db.collections1.deleteOne({"Name":"Mahipal"})
+
+db.collections1.insertOne({"Name":"Mahipal","Address":"Ahmedabad"})
+
+db.collections1.findOne({"Name":"Mahipal"})
+
+db.collections1.updateMany({},{$set:{"Age":10}})
+
+db.collections1.updateOne({"Name":"Parth"},{$set:{"Age":45}})
+
+db.collections1.find({"Age":{$gt:40}})
+
+db.collections1.find({$or:[{"Name":"Sujal"},{"Name":"Mahipal"}]})
+
+________________________________________________________________________________
+
+Ex:my
+
+db.emp.insertMany([
+  { Emp_ID: 101, Emp_Name: "Sanyam", Emp_Age: 21, Emp_Salary: 50000, Emp_Dept: "IT" },
+  { Emp_ID: 102, Emp_Name: "Mahipal", Emp_Age: 23, Emp_Salary: 45000, Emp_Dept: "Finance" },
+  { Emp_ID: 103, Emp_Name: "Parash", Emp_Age: 22, Emp_Salary: 60000, Emp_Dept: "Sales" },
+  { Emp_ID: 104, Emp_Name: "Sujal", Emp_Age: 23, Emp_Salary: 70000, Emp_Dept: "Operations" },
+  { Emp_ID: 105, Emp_Name: "Parth", Emp_Age: 22, Emp_Salary: 52000, Emp_Dept: "HR" },
+  { Emp_ID: 106, Emp_Name: "Keya", Emp_Age: 20, Emp_Salary: 55000, Emp_Dept: "Admin" }
+]);
+
+
+db.emp.updateMany({ Emp_Name: "Sanyam" }, { $set: { Emp_Name: "Sanyam Naika" } });
+db.emp.updateMany({ Emp_Name: "Mahipal" }, { $set: { Emp_Name: "Mahipal Rajpurohit" } });
+db.emp.updateMany({ Emp_Name: "Parash" }, { $set: { Emp_Name: "Parash Dadal" } });
+db.emp.updateMany({ Emp_Name: "Sujal" }, { $set: { Emp_Name: "Sujal Patel" } });
+db.emp.updateMany({ Emp_Name: "Parth" }, { $set: { Emp_Name: "Parth Rajput" } });
+db.emp.updateMany({ Emp_Name: "Keya" }, { $set: { Emp_Name: "Keya Shah" } });
+
+
+db.emp.updateMany({}, { $set: { Emp_JoiningDate: new Date("2022-01-01") } });
+
+db.emp.find().pretty()
+
+db.emp.deleteOne({ Emp_Dept: "Operations" });
+
+db.emp.find()
+
+db.emp.find(
+  { Emp_Name: { $regex: /^Sh/ } },
+  { _id: 0, Emp_Name: 1, Emp_Salary: 1 }
+);
