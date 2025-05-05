@@ -1,0 +1,54 @@
+
+
+db.Emp.insertMany([
+  			   {"Name" : "Parth", "Age" : 22 ,"City" : "Valsad", "Salary" : 80000, "Designation" : "CEO"},
+			   {"Name" : "Mahipla", "Age" : 23 ,"City" : "Navsari", "Salary" : 60000, "Designation" : "HR"},
+			   {"Name" : "Sujal", "Age" : 22 ,"City" : "Vapi", "Salary" : 45000, "Designation" : "Devloper"},
+			   {"Name" : "Sanyam", "Age" : 21 ,"City" : "Udvada", "Salary" : 42000, "Designation" : "Designer"},
+			   {"Name" : "Paras", "Age" : 22 ,"City" : "Vakaner", "Salary" : 50000, "Designation" : "Devloper"}
+]);
+
+db.Emp.insertOne({"Name" : "Vijay", "Age" : 62 ,"City" : "Valsad", "Salary" : 180000, "Designation" : "Owner"})
+
+=> Finde 
+
+db.Emp.find({},{"Name":1})
+
+db.Emp.findOne({})
+
+db.Emp.find({"Name" : "Parth" }, {"Name" : 1,"_id" : 0})
+
+db.Emp.find({"Name" : /^P/}, {"Name" : 1, "_id" : 0})
+
+db.Emp.find({"Name" : /^S.{1}n/})
+
+db.Emp.find({"Age" : {$gt : 22}})
+ 
+db.Emp.find({"Name" : /^.a/})
+
+db.Emp.find("Age" : {$gte : 22, $lte : 62})
+
+db.Emp.find({"City" : {$in : ["Valsad"]}})
+
+
+=> shorting
+
+db.Emp.find({"Name" : {$regex : /^V/}},{"Name" : 1, "_id" : 0}).sort({"Name" : -1})
+
+
+=> update
+
+db.Emp.updateMany({}, {$set : {"DOJ" : "24/05/2025"}})
+
+db.Emp.updateMany({}, {$unset : {"Age" : "22"}})
+
+db.Emp.updateOne({"Name" : /^.u/}, {$set : {"City" : "Vapi"}})
+
+db.Emp.updateMany({"Name" : /^.a/}, {$set : {"City" : "Valsad"}})
+
+
+=> delete  
+
+db.Emp.deleteMany({$or : [{"Name" : "Parth" }, {"Age" : {$gte : 22 }}] })
+
+db.Emp.deleteMany({$and : [{"Name" : "Parth"}, {"Age" : {$gte : 22 }}] })

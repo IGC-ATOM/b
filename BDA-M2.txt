@@ -1,0 +1,60 @@
+ChatGPT Questions:
+
+show dbs //to show collections:
+
+use db_BOOKS // to create a collection:
+
+db.books.insertMany([{Title:"Im Gay", Author:"Sujal", Price:169 ,Publiction_year:2025 ,Category:"Self-Respect"},
+		{Title:"Tharki", Author:"Ankit", Price:50 ,Publiction_year:2022 ,Category:"Bad Guy"},
+		{Title:"Pokkie", Author:"Mahipal", Price:6969 ,Publiction_year:2069 ,Category:"Pink Guy Only"},
+		{Title:"Love At First Sight", Author:"Parth", Price:5000 ,Publiction_year:2021 ,Category:"Still Single"},
+		{Title:"Lottery Boy", Author:"Paras", Price:1000 ,Publiction_year:2019 ,Category:"Lucky"},
+		{Title:"How to Sleep", Author:"Sanyam", Price:8000 ,Publiction_year:2024 ,Category:"Get us Sleep"},
+		{Title:"Chai Chai", Author:"Keya", Price:30 ,Publiction_year:2025,Category:"I love Chaiiiii"},
+		{Title:"Maati", Author:"Urmila", Price:5 ,Publiction_year:2024 ,Category:"Maati lover"},
+		{Title:"Absent Minded", Author:"Hasti", Price:00 ,Publiction_year:2024 ,Category:"Get a life"},
+		{Title:"Chasmish", Author:"Mansi", Price:4555,Publiction_year:2024,Category:"5 number"},
+		{Title:"Talking Motor", Author:"Renuka", Price:999 ,Publiction_year:2025,Category:"Story Teller"}])
+
+
+db.books.find({Author:"Keya"})
+
+db.books.find({Price:{$gt:1000}})
+
+db.books.find({Publiction_year:{$lt:2025}},{Title:1,_id:0})
+
+db.books.find({Category:"Self-Respect",Price:{$gt:100 , $lt:600}})
+
+db.books.find({Price:{$gte:300, $lte:1000}},{Title:1,Price:1,_id:0})
+
+db.books.updateOne({Author:"Hasti"},{$set:{Price:499}})
+
+db.books.updateOne({Category:"Self-Respect"},{$set:{Rating:1.0}})
+
+db.books.updateMany({Category:"Lucky"},{$set:{Category:"unLucky"}})
+
+db.books.deleteOne({Publiction_year:2019})
+
+db.books.updateMany({}, {$set:{Rating:"4.0"}})
+
+db.books.deleteOne({Title:"Chasmish"})
+
+db.books.find({Author:/^Par/},{_id:0,Title:1})
+
+db.books.find().pretty()
+
+
+
+
+MongoDB Compass:
+
+{ Author: "Sujal" }
+	$set: { "Title": "Bhaiyo" } 
+
+
+{"Price":{$lt:1000}}
+
+{"Price":{$gte:1000, $lte:5000}}
+
+{ "Publiction_year": { "$ne": 2025 } }
+	
